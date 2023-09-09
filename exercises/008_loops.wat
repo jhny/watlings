@@ -66,10 +66,45 @@
     )
   )
 
+  (func $is_even (param $num i32)
+     (result i32)
+
+    (local.get $num)
+    (i32.const 2)
+
+    (i32.rem_u)
+    (i32.eqz))
+
   (func $count_even_until (param $end i32)
     ;; TODO: call $log_num for every even number starting at 0.
     ;; Log until $end exclusive (do not log $end)
-  )
+
+    (local $num i32)
+    (local.set $num (i32.const 0))
+    (loop $walk 
+
+    
+      (if (i32.eq (local.get $num) (local.get $end))
+       (then 
+       
+       )
+       (else 
+
+
+        (if (call $is_even (local.get $num))
+
+        (then 
+          (call $log_num (local.get $num))))
+
+
+
+       (local.set $num (i32.add (local.get $num) (i32.const 1)))
+
+       (br $walk)
+       )
+      )
+    )
+    )
 
   (export "countDown" (func $count_down))
   (export "countUntil" (func $count_until))

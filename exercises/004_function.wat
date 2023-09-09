@@ -17,15 +17,18 @@
 
 (module
   ;; A function that returns the number 42
-  (func $get_num (result i32) (i32.const 42))
+  (func $get_num 
+  (result i32) 
+  (i32.const 42))
   ;; A function that returns the number it's given
-  (func $get_num_2 (param i32) (result i32) 
+  (func $get_num_2 
+  (param i32) 
+  (result i32) 
     (local.get 0)
   )
 
   ;; A function that adds 2 numbers, a and b
-  (func $add
-    (param $a i32) (param $b i32)
+  (func $add (param $a i32) (param $b i32) 
     (result i32)
 
     ;; The last stack value is the return value
@@ -33,8 +36,26 @@
   )
 
   ;; TODO: fill in the blanks!
-  (func $sub)
-  (func $mul)
+  (func $sub 
+    (param  i32) (param  i32) 
+    (result i32)
+
+    local.get 0
+    local.get 1
+
+    i32.sub
+  )
+  (func $mul
+  (param $a i32) (param $b i32) 
+    (result i32)
+  
+
+    (local.get $a)
+    (local.get $b)
+
+    (i32.mul )
+  
+  )
 
   (export "add" (func $add))
   (export "sub" (func $sub))

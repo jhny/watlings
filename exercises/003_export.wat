@@ -15,10 +15,10 @@
 (module
   (import "env" "log" (func $log_num (param i32)))
 
-  (func $main
+  (func $main 
     (call $log_num (i32.const 42))
   )
 
   ;; TODO: replace this with an export
-  (start $main)
+  (export "main" (func $main))
 )

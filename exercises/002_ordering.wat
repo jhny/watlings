@@ -27,6 +27,10 @@
 
   (func $main
     ;; TODO: call $log_nums here
+    i32.const  1
+    i32.const  2
+    i32.const  3
+    call $log_nums
   )
 
   (start $main)

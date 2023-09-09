@@ -43,14 +43,11 @@
 
     (local $return_value i32)
 
-    (if
-      (local.get $conditional)
+    (if (local.get $conditional)
       (then 
-        (local.set $return_value (local.get $if_value))
-      )
+        (local.set $return_value (local.get $if_value)))
       (else
-        (local.set $return_value (local.get $else_value))
-      )
+        (local.set $return_value (local.get $else_value)))
     )
 
     (local.get $return_value)
@@ -59,6 +56,22 @@
   (func (export "getNum") (param $num i32) (result i32)
     ;; TODO:
     ;; return 42 if even, 100 if odd
+    (local $return_value i32)
+    (local $conditional i32)
+
+    local.get $num
+    call $is_even
+    local.set $conditional
+
+    (if (local.get $conditional)
+      (then 
+        (local.set $return_value (i32.const 42)))
+      (else
+        (local.set $return_value (i32.const 100)))
+    )
+
+    local.get $return_value
+
   )
 
   (export "isEven" (func $is_even))
